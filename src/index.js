@@ -14,6 +14,7 @@ app.use('/public', express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 
 // Arranque de servidor
-app.listen(3000, () => {
-    console.log('Static page Server running on ', 3000);
-})
+app.set('port', process.env.PORT || 3000);
+app.listen(app.get('port'), () => {
+    console.log(`Server on port ${app.get('port')}`);
+});
